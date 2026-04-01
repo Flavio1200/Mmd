@@ -6,6 +6,7 @@ import { ref, onMounted } from 'vue'
 const { getCountries } = useCountriesAPI()
 
 const countries = ref([])
+const allCountries = ref([])
 const loadingCountries = ref(false)
 const error = ref(null)
 
@@ -14,8 +15,10 @@ const loadCountries = async () => {
   error.value = null
   
   try {
-    countries.value = await getCountries()
-    countries.value.sort((a, b) => a.name.common.localeCompare(b.name.common))
+    const data = await getCountries()
+    data.sort((a, b) => a.name.common.localeCompare(b.name.common))
+    allCountries.value = data
+    countries.value = data
   } catch (err) {
     error.value = `Error al cargar países: ${err.message}`
     console.error(err)
@@ -29,14 +32,20 @@ onMounted(() => {
 })
 
 const search = ref("")
-    watch(search,()=>{
-        countries.value = countries.value.filter(n => n.name.common.toLowerCase().includes(search.value.toLowerCase()))
-    })
+watch(search, (newValue) => {
+    const term = newValue.toLowerCase()
+    if (!term) {
+        countries.value = allCountries.value
+        return
+    }
+
+    countries.value = allCountries.value.filter(n => n.name.common.toLowerCase().includes(term))
+})
 
 </script>
 
 <template>
-    <div class=" px-4 py-20 gradient-bg-features">
+    <div class="min-h-screen px-4 py-20 gradient-bg-features">
         <h1 class="text-3xl font-bold mb-6 text-center">Países</h1>
         <p class="text-lg text-gray-700 mb-4 text-center">Aquí puedes encontrar información sobre diferentes países.</p>
         <div class="cont">

@@ -6,10 +6,10 @@ import { gsap } from 'gsap';
     const cardsRef = ref(null);
     
     const features = ref([
-        { icon: "📚", label: "Conocimiento" },
-        { icon: "⚡", label: "Velocidad" },
-        { icon: "🔒", label: "Privacidad" },
-        { icon: "🌐", label: "Accesibilidad" },
+        { icon: "💲", title: "Finanzas", description: "Conoce los movimientos financieros en tiempo real y toma decisiones informadas" },
+        { icon: "🌎", title: "Países", description: "Averigua toda la información necesaria sobre el país que más te guste" },
+        { icon: "🌡️", title: "Clima (próximamente)", description: "Entérate de las condiciones climáticas en tu ubicación o en cualquier otro lugar del mundo!" },
+        { icon: "📰", title: "Noticias (próximamente)", description: "Las últimas noticias sobre temas de interés." },
     ]);
     
     onMounted(() => {
@@ -45,17 +45,20 @@ import { gsap } from 'gsap';
       ref="sectionRef"
       class="min-h-screen flex flex-col items-center justify-center px-6 py-24 text-center"
     >
-      <h2 class="text-5xl md:text-5xl font-bold text-foreground">
+      <h2 class="text-3xl md:text-5xl font-bold text-foreground">
         Todo lo que necesitas en un solo lugar
       </h2>
-      <p class="text-2xl mt-3 md:text-2xl text-foreground/60 max-w-md leading-relaxed">
+      <p class="text-xl mt-3 md:text-2xl text-foreground/60 max-w-lg leading-relaxed">
         Por qué seguir buscando en diferentes sitios si puedes tener todas tus respuestas aquí?
       </p>
 
       <div ref="cardsRef" class="mt-12 flex flex-wrap justify-center gap-6">
-          <div v-for="feature in features" :key="feature.label" class="feature-card" >
-            <div class="text-4xl mb-4">{feature.icon}</div>
-            <span class="text-sm font-semibold text-foreground">{feature.label}</span>
+          <div v-for="feature in features" :key="feature.title" class="feature-card" >
+            <div>
+              <div class="text-4xl mb-4 inline-block">{{ feature.icon }}</div>
+              <h3 class="text-xl font-bold text-foreground inline-block">{{ feature.title }}</h3>
+            </div>
+            <p class="text-foreground/60">{{ feature.description }}</p>
           </div>
       </div>
     </section>

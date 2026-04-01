@@ -32,7 +32,7 @@ import { gsap } from 'gsap';
       <h1 ref={{titleRef}} class="text-4xl md:text-6xl font-black tracking-tight text-foreground leading-tight">
         Tu Micro Mundo Digital
       </h1>
-      <p ref={{subtitleRef}} class="mt-4 text-base md:text-2xl text-foreground/70 font-medium">
+      <p ref={{subtitleRef}} class="mt-4 text-xl md:text-2xl text-foreground/70 font-medium">
         El futuro de la información
       </p>
     </section>

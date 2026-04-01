@@ -22,14 +22,8 @@ function closeDropdown() {
                         <NuxtLink to="/services/finance" class="w-full px-4 py-2.5 text-sm text-left hover:bg-white/20 transition-colors rounded-lg">
                             Finanzas
                         </NuxtLink>
-                        <NuxtLink to="/services/climate" class="w-full px-4 py-2.5 text-sm text-left hover:bg-white/20 transition-colors rounded-lg">
-                            Clima
-                        </NuxtLink>
                         <NuxtLink to="/services/countries" class="w-full px-4 py-2.5 text-sm text-left hover:bg-white/20 transition-colors rounded-lg">
                             Países
-                        </NuxtLink>
-                        <NuxtLink to="/services/news" class="w-full px-4 py-2.5 text-sm text-left hover:bg-white/20 transition-colors rounded-lg">
-                            Noticias
                         </NuxtLink>
                     </div>
                 </div>

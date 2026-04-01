@@ -1,7 +1,6 @@
 <template>
-    <div class="gradient-bg-features w-screen">
+    <div class="gradient-bg-features w-full">
         <Hero />
         <Feature />
-        <ServicesSection />
     </div>
 </template>
