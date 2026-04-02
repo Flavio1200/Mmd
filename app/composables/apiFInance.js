@@ -1,7 +1,8 @@
 
 
 export function useApiFinance() {
-  const apiKey = "0kS3qAkjNxfpmphtRL2kYExYSKajzKBQ";
+  const config = useRuntimeConfig();
+  const apiKey = config.public.FINANCE_API_KEY;
 
 
   const getFinanceData = (company) => {
@@ -9,7 +10,7 @@ export function useApiFinance() {
   }
 
   const getInterestRates = (company) => {
-    return $fetch(`https://api.massive.com/stocks/v1/dividends?ticker=${company.toUpperCase()}&limit=100&sort=ticker.asc&apiKey=${apiKey}`)
+    return $fetch(`https://api.massive.com/stocks/v1/short-interest?ticker=${company.toUpperCase()}&limit=10&sort=ticker.asc&apiKey=${apiKey}`)
   }
 
   const getMarket = () => {

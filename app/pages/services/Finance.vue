@@ -26,29 +26,29 @@
 </script>
 
 <template>
-    <div class="bg-orange-50 py-16 px-4 h-screen ">
-        <h1 class="text-3xl font-bold my-4 text-center">Datos Financieros</h1>
-        <p class="text-lg text-slate-700 text-center">
+    <div class="bg-orange-50 py-16 px-4 h-fit md:h-screen">
+        <h1 class="text-2xl font-bold my-4 text-center md:text-3xl">Datos Financieros</h1>
+        <p class="text-md text-slate-700 text-center md:text-lg">
             Busca información detallada sobre tendencias financieras, análisis de mercado y datos económicos actualizados.
         </p>
         <div class="flex gap-3">
-            <input type="text" class=" flex-1 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" v-model="company">
+            <input type="text" class="flex-1 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" v-model="company">
             <button @click="loadFinanceData" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buscar</button>
         </div>
         <div v-if="loadingFinance" class="text-center">Cargando...</div>
         <div class="cont-info flex gap-4 mt-8 mb-8" v-else-if="interestRatesData.results && volumeData.results">
-            <FinanceCard title="Interest Rates" :value1="interestRatesData.results[0].short_interest" :value2="interestRatesData.results[0].days_to_cover" />
-            <FinanceCard title="Short Volume" :value1="volumeData.results[0].total_volume" :value2="volumeData.results[0].short_volume" />
+            <FinanceCard title="Intereses" :value1="interestRatesData.results[0].short_interest" :value2="interestRatesData.results[0].days_to_cover" />
+            <FinanceCard title="Volúmen" :value1="volumeData.results[0].total_volume" :value2="volumeData.results[0].short_volume" />
         </div>
         <div class="info-empresa">
             <h3 class="text-center text-2xl mb-4 text-slate-700">Información de la Empresa</h3>
             <div v-if="loadingFinance" class="text-center">Cargando...</div>
-            <div class="company-info flex gap-2" v-else-if="financeData.results && marketData">
+            <div class="company-info flex flex-col md:flex-row gap-2" v-else-if="financeData.results && marketData">
                 <GeneralInfo
                     :Nombre="financeData.results.name"
                     :Ticker="financeData.results.ticker_root"
                     :Ubicacion="financeData.results.address.city"
-                    :Fundada="financeData.list_date"
+                    :Fundada="financeData.results.list_date"
                     :Valoracion="financeData.results.market_cap"
                     :Moneda="financeData.results.currency_name"
                 />
